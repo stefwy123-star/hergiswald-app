@@ -6,7 +6,7 @@
     <title>Wallfahrtskirche Hergiswald</title>
 
     <!-- PWA -->
-    <link rel="manifest" href="manifest.json">
+    <link rel="manifest" href="manifest.json" />
     <meta name="theme-color" content="#ffffff" />
 
     <!-- Optional für iPhone -->
@@ -19,18 +19,42 @@
   <body>
     <main class="container">
       <h1>Wallfahrtskirche Hergiswald</h1>
-      <p>Willkommen zur digitalen Entdeckung der Kirche.</p>
+
+      <p class="lead">
+        Entdecken Sie eine der eindrücklichsten barocken Kirchen der Zentralschweiz –
+        mit ihrem einzigartigen Bilderhimmel und verborgenen Symbolen.
+      </p>
+
+      <div class="image-wrap">
+        <img
+          src="assets/start.jpg"
+          alt="Innenansicht der Wallfahrtskirche Hergiswald"
+        />
+      </div>
+
+      <p>
+        Diese Anwendung führt Sie interaktiv durch die Kirche. Wählen Sie, womit
+        Sie beginnen möchten:
+      </p>
 
       <div class="button-group">
         <a class="big-button" href="grundriss.html">Grundriss entdecken</a>
         <a class="big-button" href="decke.html">Bilderhimmel entdecken</a>
-
-        </a>
       </div>
+
+      <p class="hint">
+        Tipp: Am besten funktioniert die Anwendung direkt vor Ort in der Kirche.
+      </p>
+
+      <hr />
+
+      <p class="small">
+        Ein digitales Vermittlungsprojekt zur Erkundung der Bildsprache des
+        Hergiswalds.
+      </p>
     </main>
 
     <!-- Service Worker Registrierung -->
     <script src="script.js"></script>
   </body>
 </html>
-<!-- test -->
