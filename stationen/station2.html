@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Station 2 – Zeichen am Himmel</title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="../style.css" />
+</head>
+
+<body>
+  <main class="container">
+    <h1>Station 2 – Zeichen am Himmel</h1>
+
+    <p class="lead">
+      Hebe deinen Blick.
+    </p>
+
+    <p>
+      Der Himmel der Kirche ist voller Zeichen. Manche Menschen sehen nur Bilder.
+      Andere entdecken darin Hinweise.
+    </p>
+
+    <p>
+      Suche im Bilderhimmel nach einem Zeichen, das Orientierung geben könnte.
+      Was passt am besten?
+    </p>
+
+    <div class="image-wrap">
+      <img
+        src="../assets/zonen/sued_k.jpg"
+        alt="Ausschnitt des Bilderhimmels in der Südspitze"
+      />
+    </div>
+
+    <div class="quiz">
+      <button onclick="checkAnswer('falsch')">Ein Zeichen für Zufall</button>
+      <button onclick="checkAnswer('richtig')">Ein Zeichen für Orientierung</button>
+      <button onclick="checkAnswer('falsch')">Ein Zeichen für Lärm</button>
+    </div>
+
+    <p id="feedback"></p>
+
+    <a id="nextButton" class="big-button" href="station3.html" style="display:none;">
+      Weiter zur nächsten Station →
+    </a>
+
+    <hr />
+
+    <a href="../trail-start.html" class="small">← Zurück zur Schnitzeljagd</a>
+  </main>
+
+  <!-- Trail-Logik -->
+  <script src="../trail.js"></script>
+
+  <script>
+    // Schutz: Station 2 nur, wenn Station 1 gelöst wurde
+    if (localStorage.getItem("station1") !== "solved") {
+      window.location.href = "../trail-start.html";
+    }
+
+    function checkAnswer(answer) {
+      const feedback = document.getElementById("feedback");
+      const nextButton = document.getElementById("nextButton");
+
+      if (answer === "richtig") {
+        feedback.textContent = "Richtig. Du hast den zweiten Hinweis gefunden.";
+
+        // Fortschritt speichern
+        localStorage.setItem("station2", "solved");
+        localStorage.setItem("hinweis2", "Orientierung");
+
+        // Punkte erhöhen, aber nicht mehrfach
+        if (localStorage.getItem("station2_counted") !== "yes") {
+          let points = parseInt(localStorage.getItem("punkte")) || 0;
+          localStorage.setItem("punkte", points + 1);
+          localStorage.setItem("station2_counted", "yes");
+        }
+
+        nextButton.style.display = "inline-block";
+      } else {
+        feedback.textContent = "Noch nicht ganz. Überlege: Welches Zeichen hilft Menschen, sich zu orientieren?";
+      }
+    }
+  </script>
+</body>
+</html>

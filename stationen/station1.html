@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Station 1 – Das verborgene Haus</title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="../style.css" />
+</head>
+
+<body>
+  <main class="container">
+    <h1>Station 1 – Das verborgene Haus</h1>
+
+    <p class="lead">
+      Deine Spurensuche beginnt.
+    </p>
+
+    <p>
+      Dieses kleine Haus steht mitten in der Kirche.  
+      Es wirkt unscheinbar – und doch ist es zentral.
+    </p>
+
+    <p>
+      Schau es dir genau an:  
+      Was könnte seine Bedeutung sein?
+    </p>
+
+    <div class="image-wrap">
+      <img src="../assets/orte/loretokapelle-1.jpg" alt="Loretokapelle" />
+    </div>
+
+    <div class="quiz">
+      <button onclick="checkAnswer('falsch')">Nur Dekoration</button>
+      <button onclick="checkAnswer('richtig')">Ein Ort von Schutz und Bedeutung</button>
+      <button onclick="checkAnswer('falsch')">Ein Lagerraum</button>
+    </div>
+
+    <p id="feedback"></p>
+
+    <a id="nextButton" class="big-button" href="station2.html" style="display:none;">
+      Weiter zur nächsten Station →
+    </a>
+
+    <hr />
+
+    <a href="../trail-start.html" class="small">← Zurück zur Schnitzeljagd</a>
+  </main>
+
+  <!-- Trail-Logik -->
+  <script src="../trail.js"></script>
+
+  <script>
+  function checkAnswer(answer) {
+    const feedback = document.getElementById("feedback");
+    const nextButton = document.getElementById("nextButton");
+
+    if (answer === "richtig") {
+      feedback.textContent = "Richtig. Du hast den ersten Hinweis gefunden.";
+
+      localStorage.setItem("station1", "solved");
+      localStorage.setItem("hinweis1", "Schutz");
+
+      if (localStorage.getItem("station1_counted") !== "yes") {
+        let points = parseInt(localStorage.getItem("punkte")) || 0;
+        localStorage.setItem("punkte", points + 1);
+        localStorage.setItem("station1_counted", "yes");
+      }
+
+      nextButton.style.display = "inline-block";
+    } else {
+      feedback.textContent = "Noch nicht ganz. Schau dir den Ort nochmals genau an.";
+      }
+    }
+  </script>
+
+</body>
+</html>
